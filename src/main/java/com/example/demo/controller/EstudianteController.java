@@ -32,4 +32,18 @@ public class EstudianteController {
         return "estudiantes-list";
     }
 
+    @GetMapping("/borrarEstudiante")
+    public String removerContacto(String matricula){
+        Estudiante estudianteEliminar = null;
+        for (Estudiante est : this.estudiantes){
+            if (est.getMatricula().equals(matricula)){
+                estudianteEliminar = est;
+            }
+        }
+        if (estudianteEliminar != null){
+            this.estudiantes.remove(estudianteEliminar);
+        }
+        return "redirect:/listarEstudiantes";
+    }
+
 }
