@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Estudiante;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -22,7 +23,13 @@ public class EstudianteController {
     public String salvarEstudiante(Estudiante estudiante){
         this.estudiantes.add(estudiante);
         System.out.println(estudiante);
-        return "redirect:/crearEstudiante";
+        return "redirect:/listarEstudiantes";
+    }
+
+    @GetMapping("/listarEstudiantes")
+    public String listarEstudiantes(Model model){
+        model.addAttribute("lista", estudiantes);
+        return "estudiantes-list";
     }
 
 }
