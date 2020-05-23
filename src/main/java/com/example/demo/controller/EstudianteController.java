@@ -21,6 +21,7 @@ public class EstudianteController {
 
     @PostMapping("/guardarEstudiante")
     public String salvarEstudiante(Estudiante estudiante){
+        this.estudiantes.remove(estudiante);
         this.estudiantes.add(estudiante);
         System.out.println(estudiante);
         return "redirect:/listarEstudiantes";
@@ -44,6 +45,18 @@ public class EstudianteController {
             this.estudiantes.remove(estudianteEliminar);
         }
         return "redirect:/listarEstudiantes";
+    }
+
+    @GetMapping("/editarEstudiante")
+    public String editarEstudiante(String matricula, Model model){
+        Estudiante estudianteEditar = null;
+        for (Estudiante est : this.estudiantes){
+            if (est.getMatricula().equals(matricula)){
+                estudianteEditar = est;
+            }
+        }
+        model.addAttribute("estudiante", estudianteEditar);
+        return "estudiantes-form";
     }
 
 }

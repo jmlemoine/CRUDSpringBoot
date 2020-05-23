@@ -34,6 +34,25 @@ public class Estudiante {
     }
 
     @Override
+    public boolean equals(Object obj){
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Estudiante other = (Estudiante) obj;
+        if (matricula == null){
+            if (other.matricula != null)
+                return false;
+        }
+        else if (!matricula.equals(other.matricula))
+            return false;
+
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "Estudiante: {" +
                 "Matrícula='" + matricula + '\'' +
