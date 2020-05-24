@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-@RestController
+
 public class CrudApplication {
 
     public static void main(String[] args) {
